@@ -1,20 +1,36 @@
-def dinh_dang_ngay_thang_nam(ngay, thang, nam):
-  
+import random
 
-  dinh_dang = []
-  dinh_dang.append(f"{ngay}/{thang}/{nam}")
-  dinh_dang.append(f"{ngay}/{thang}/{str(nam)[2:]}")
-  dinh_dang.append(f"{nam}/{thang}/{ngay}")
-  return dinh_dang
+def xin_so_ngau_nhien(a, b):
+  """Xin một số ngẫu nhiên trong khoảng từ a đến b (bao gồm cả a và b)
 
-# Nhập ngày, tháng, năm
-ngay = int(input("Nhập ngày sinh: "))
-thang = int(input("Nhập tháng sinh: "))
-nam = int(input("Nhập năm sinh: "))
+  Args:
+    a: Giới hạn dưới
+    b: Giới hạn trên
 
-# Định dạng và in kết quả
-ket_qua = dinh_dang_ngay_thang_nam(ngay, thang, nam)
-print("Các định dạng ngày tháng năm:")
-for i, dinh_dang in enumerate(ket_qua, 1):
-  print(f"{i}. {dinh_dang}")
-  
+  Returns:
+    Một số ngẫu nhiên trong khoảng đã cho
+  """
+
+  return random.randint(a, b)
+
+# Nhập lựa chọn
+lua_chon = input("Chọn khoảng bạn muốn: \n "
+                 "a. 0 đến 100\n"
+                 "b. 50 đến 99\n"
+                 "c. -39 đến 79\n"
+                 "d. -79 đến -39\n"
+                 "Khoản bạn muốn chọn là:")
+
+# Xin số ngẫu nhiên theo lựa chọn
+if lua_chon == 'a':
+  so_ngau_nhien = xin_so_ngau_nhien(0, 100)
+elif lua_chon == 'b':
+  so_ngau_nhien = xin_so_ngau_nhien(50, 99)
+elif lua_chon == 'c':
+  so_ngau_nhien = xin_so_ngau_nhien(-39, 79)
+elif lua_chon == 'd':
+  so_ngau_nhien = xin_so_ngau_nhien(-79, -39)
+else:
+  print("Lựa chọn không hợp lệ!")
+  exit()
+print("Số ngẫu nhiên:", so_ngau_nhien)
